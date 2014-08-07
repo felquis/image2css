@@ -6,25 +6,10 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<input type="file" id="files" name="files[]" multiple />
-	<output id="list"></output>
+  <div class="drop-zone">Drop files here or <input type="file" id="files" name="files[]" multiple /></div>
+	<div class="list"></div>
 
   <script src="image2css.js"></script>
   <script src="script.js"></script>
-
-  <script>
-  image2css({
-  	images: ['gun.png', 'face.png']
-  }, function (images) {
-	console.log('Deu tudo certo', images);
-
-	images.forEach(function (image, index) {
-
-		console.log('index', index, image);
-	});
-  }, function () {
-  	console.log('Houve algum erro');
-  })
-  </script>
 </body>
 </html>
