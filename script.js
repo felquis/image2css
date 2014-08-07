@@ -42,7 +42,7 @@ var imageLoaded = function (event) {
     y = Math.floor((i / 4) / canvasWidth);
 
     if (data.data[i + 3] > 0) {
-      ArrayBoxshadow.push(suffix(x) + ' ' + suffix(y) + 'em rgba('+ data.data[i] +', '+ data.data[i + 1] +', '+ data.data[i + 2] +', '+ data.data[i + 3] / 255 +')');
+      ArrayBoxshadow.push(suffix(x) + ' ' + suffix(y) + ' rgba('+ data.data[i] +', '+ data.data[i + 1] +', '+ data.data[i + 2] +', '+ data.data[i + 3] / 255 +')');
     }
   }
 
