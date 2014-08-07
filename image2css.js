@@ -28,6 +28,19 @@
 
             return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
         },
+        lengthInUtf8Bytes = function (str) {
+          var m = encodeURIComponent(str).match(/%[89ABab]/g);
+          return str.length + (m ? m.length : 0);
+        },
+        bytesToSize = function(bytes) {
+          if(bytes == 0) return '0 Byte';
+
+          var k = 1000;
+          var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+          var i = Math.floor(Math.log(bytes) / Math.log(k));
+
+          return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+        },
         runImageToBoxshadow = function (image) {
             var canvas = document.createElement('canvas'),
                 context, x, y, alpha, ArrayBoxshadow = [];
@@ -61,9 +74,13 @@
                 }
             }
 
+            ArrayBoxshadow = ArrayBoxshadow.join(',');
+
             results.push({
                 filename: image.src,
-                boxshadow: ArrayBoxshadow.join(','),
+                boxshadow: ArrayBoxshadow,
+                bytes: lengthInUtf8Bytes(ArrayBoxshadow),
+                size: bytesToSize(lengthInUtf8Bytes(ArrayBoxshadow)),
                 index: image.dataset.index
             });
 
