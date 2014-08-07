@@ -22,8 +22,9 @@ function handleFileSelect(evt) {
         var span = document.createElement('span');
         span.classList.add('item');
 
-        span.innerHTML = ['<img class="thumb" src="', e.target.result,
-                          '" title="', escape(theFile.name), '"/>'].join('');
+        span.innerHTML = ['Original Image: <br> ', '<img class="thumb" src="', e.target.result,
+                          '" title="', escape(theFile.name), '"/>',
+                          'box-shadow version: <br> '].join('');
 
         image2css({
           images: [e.target.result]
@@ -35,7 +36,8 @@ function handleFileSelect(evt) {
 
             span.appendChild(i);
 
-            document.querySelector('.list').insertBefore(span, null);
+            document.querySelector('.output').value = i.getAttribute('style');
+            document.querySelector('.result').insertBefore(span, null);
           })
         })
       };
