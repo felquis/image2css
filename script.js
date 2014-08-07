@@ -33,7 +33,9 @@ var imageLoaded = function (event) {
     x = (i / 4) % canvasWidth;
     y = Math.floor((i / 4) / canvasWidth);
 
-    ArrayBoxshadow.push(x + 'em ' + y + 'em 0 rgb(' + data.data[i] + ', ' + data.data[i + 1] + ', ' + data.data[i + 2] + ')');
+    if (data.data[i + 3] > 0) {
+      ArrayBoxshadow.push(x + 'em ' + y + 'em rgba('+ data.data[i] +', '+ data.data[i + 1] +', '+ data.data[i + 2] +', '+ data.data[i + 3] / 255 +')');
+    }
   }
 
   ctx.putImageData(data, 0, 0);
