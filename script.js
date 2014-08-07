@@ -22,7 +22,7 @@ function handleFileSelect(evt) {
         var span = document.createElement('span');
         span.classList.add('item');
 
-        spanText = ['Original Image ', theFile.size ,' bytes: <br> ',
+        spanText = ['Original Image ', image2css.bytesToSize(theFile.size) ,' bytes: <br> ',
                           '<img class="thumb" src="', e.target.result,
                           '" title="', escape(theFile.name), '"/>'];
 
