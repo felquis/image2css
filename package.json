@@ -1,0 +1,31 @@
+{
+  "name": "image2css",
+  "version": "0.1.0",
+  "description": "Convert image to box-shadow",
+  "main": "image2css.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/felquis/image2css"
+  },
+  "keywords": [
+    "css",
+    "image",
+    "canvas",
+    "box-shadow",
+    "convert",
+    "transform"
+  ],
+  "author": "Felquis Gimenes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/felquis/image2css/issues"
+  },
+  "homepage": "https://github.com/felquis/image2css",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-gh-pages": "^0.9.1"
+  }
+}
