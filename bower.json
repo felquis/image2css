@@ -1,7 +1,7 @@
 {
   "name": "image2css",
   "main": "image2css.js",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/felquis/image2css",
   "authors": [
     "Felquis Gimenes <frgformenton@gmail.com>"
