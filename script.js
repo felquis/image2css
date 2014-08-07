@@ -10,6 +10,14 @@ var ArrayBoxshadow = [];
 
 image.src = 'gun.png';
 
+var prefix = function (number) {
+  if (number > 0) {
+    return number + 'em';
+  }
+
+  return number;
+}
+
 var imageLoaded = function (event) {
 
   var image = event.currentTarget;
@@ -34,7 +42,7 @@ var imageLoaded = function (event) {
     y = Math.floor((i / 4) / canvasWidth);
 
     if (data.data[i + 3] > 0) {
-      ArrayBoxshadow.push(x + 'em ' + y + 'em rgba('+ data.data[i] +', '+ data.data[i + 1] +', '+ data.data[i + 2] +', '+ data.data[i + 3] / 255 +')');
+      ArrayBoxshadow.push(prefix(x) + ' ' + prefix(y) + 'em rgba('+ data.data[i] +', '+ data.data[i + 1] +', '+ data.data[i + 2] +', '+ data.data[i + 3] / 255 +')');
     }
   }
 
