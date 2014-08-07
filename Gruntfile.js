@@ -13,13 +13,25 @@ module.exports = function(grunt) {
       src: ['index.html',
             'image2css.js',
             'style.css',
-            'script.js']
+            'script.js',
+            'bower_components/',
+            'tests/']
   }
+
+  taskConfigs.mocha = {
+    image2css: {
+      src: ['tests/index.html'],
+      options: {
+        run: true,
+      }
+    },
+  },
 
   grunt.initConfig(taskConfigs);
 
   grunt.loadNpmTasks('grunt-gh-pages');
+  grunt.loadNpmTasks('grunt-mocha');
 
-  grunt.registerTask('deploy', ['gh-pages']);
+  grunt.registerTask('deploy', ['mocha:image2css', 'gh-deploy']);
 
 };

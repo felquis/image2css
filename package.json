@@ -26,6 +26,7 @@
   "homepage": "https://github.com/felquis/image2css",
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-gh-pages": "^0.9.1"
+    "grunt-gh-pages": "^0.9.1",
+    "grunt-mocha": "^0.4.11"
   }
 }

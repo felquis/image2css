@@ -28,5 +28,9 @@
     "*.css",
     "README.md",
     "package.json"
-  ]
+  ],
+  "dependencies": {
+    "mocha": "~1.21.4",
+    "chai": "~1.9.1"
+  }
 }
