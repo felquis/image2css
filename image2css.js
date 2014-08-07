@@ -67,8 +67,8 @@
                 y = Math.floor((i / 4) / canvasWidth);
                 alpha = imageData.data[i + 3] / 255;
 
-                if (alpha < 1 && alpha < 0) {
-                    ArrayBoxshadow.push(suffix(x) + ' ' + suffix(y) + ' rgba('+ imageData.data[i] +', '+ imageData.data[i + 1] +', '+ imageData.data[i + 2] +', '+ alpha +')');
+                if (alpha < 1 && alpha > 0) {
+                    ArrayBoxshadow.push(suffix(x) + ' ' + suffix(y) + ' rgba('+ imageData.data[i] +','+ imageData.data[i + 1] +','+ imageData.data[i + 2] +','+ alpha +')');
                 } else if (alpha === 1) {
                     ArrayBoxshadow.push(suffix(x) + ' ' + suffix(y) + ' ' + RGBToHex(imageData.data[i], imageData.data[i + 1], imageData.data[i + 2]));
                 }
