@@ -20,27 +20,6 @@
 
           return number;
         },
-        RGBToHex = function (r, g, b) {
-            function componentToHex(c) {
-                var hex = c.toString(16);
-                return hex.length == 1 ? "0" + hex : hex;
-            }
-
-            return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-        },
-        lengthInUtf8Bytes = function (str) {
-          var m = encodeURIComponent(str).match(/%[89ABab]/g);
-          return str.length + (m ? m.length : 0);
-        },
-        bytesToSize = function(bytes) {
-          if(bytes == 0) return '0 Byte';
-
-          var k = 1000;
-          var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-          var i = Math.floor(Math.log(bytes) / Math.log(k));
-
-          return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
-        },
         runImageToBoxshadow = function (image) {
             var canvas = document.createElement('canvas'),
                 context, x, y, alpha, ArrayBoxshadow = [];
@@ -91,7 +70,32 @@
 
         // Init load images
         options.images.forEach(loadImage);
-    }
+    },
+    RGBToHex = function (r, g, b) {
+      function componentToHex(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+      }
+
+      return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    },
+    bytesToSize = function(bytes) {
+      if(bytes == 0) return '0 Byte';
+
+      var k = 1000;
+      var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+      var i = Math.floor(Math.log(bytes) / Math.log(k));
+
+      return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+    },
+    lengthInUtf8Bytes = function (str) {
+      var m = encodeURIComponent(str).match(/%[89ABab]/g);
+      return str.length + (m ? m.length : 0);
+    };
+
+    image2css.RGBToHex = RGBToHex;
+    image2css.bytesToSize = bytesToSize;
+    image2css.lengthInUtf8Bytes = lengthInUtf8Bytes;
 
     window.image2css = image2css;
 }());
