@@ -7,6 +7,20 @@
 </head>
 <body>
 
-  <script src="script.js"></script>
+  <script src="image2css.js"></script>
+  <script>
+  image2css({
+  	images: ['gun.png', 'face.png']
+  }, function (images) {
+	console.log('Deu tudo certo', images);
+
+	images.forEach(function (image, index) {
+
+		console.log('index', index, image);
+	});
+  }, function () {
+  	console.log('Houve algum erro');
+  })
+  </script>
 </body>
 </html>
