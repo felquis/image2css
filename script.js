@@ -22,9 +22,9 @@ function handleFileSelect(evt) {
         var span = document.createElement('span');
         span.classList.add('item');
 
-        span.innerHTML = ['Original Image: <br> ', '<img class="thumb" src="', e.target.result,
-                          '" title="', escape(theFile.name), '"/>',
-                          'box-shadow version: <br> '].join('');
+        spanText = ['Original Image ', theFile.size ,' bytes: <br> ',
+                          '<img class="thumb" src="', e.target.result,
+                          '" title="', escape(theFile.name), '"/>'];
 
         image2css({
           images: [e.target.result]
@@ -34,9 +34,11 @@ function handleFileSelect(evt) {
 
             i.style.boxShadow = image.boxshadow;
 
+            spanText.push('box-shadow version:', image.size, ' <br>');
+            span.innerHTML = spanText.join('');
             span.appendChild(i);
 
-            document.querySelector('.output').value = i.getAttribute('style');
+            document.querySelector('.output').value = image.boxshadow;
             document.querySelector('.result').insertBefore(span, null);
           })
         })

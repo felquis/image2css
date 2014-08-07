@@ -47,6 +47,10 @@ body, html {
   align-items: center;
 }
 
+.setup {
+  flex: 1;
+}
+
 .output {
   flex: 1;
 }
