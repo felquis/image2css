@@ -4,7 +4,8 @@
   "description": "Convert image to box-shadow",
   "main": "image2css.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt mocha",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,10 @@
     "url": "https://github.com/felquis/image2css/issues"
   },
   "homepage": "https://github.com/felquis/image2css",
+  "peerDependencies": {
+    "grunt-cli": ">=0.1.x",
+    "phantomjs": ">=1.9.7"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-gh-pages": "^0.9.1",

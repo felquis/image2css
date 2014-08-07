@@ -1,6 +1,6 @@
 {
   "name": "image2css",
-  "main": "image2css.js",
+  "main": "lib/image2css.js",
   "version": "1.0.0",
   "homepage": "https://github.com/felquis/image2css",
   "authors": [
@@ -22,7 +22,7 @@
     "bower_components",
     "test",
     "tests",
-    "Gruntfile.js",
+    "*.js",
     ".grunt/",
     "*.html",
     "*.css",
