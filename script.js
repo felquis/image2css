@@ -39,6 +39,7 @@ function handleFileSelect(evt) {
             span.appendChild(i);
 
             document.querySelector('.output').value = image.boxshadow;
+            document.querySelector('.result').innerHTML = '';
             document.querySelector('.result').insertBefore(span, null);
           })
         })
