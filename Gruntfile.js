@@ -15,7 +15,10 @@ module.exports = function(grunt) {
             'style.css',
             'script.js',
             'bower_components/**',
-            'tests/**']
+            'tests/**',
+            'css/**',
+            'scripts/**',
+            'lib/**']
   }
 
   taskConfigs.mocha = {
