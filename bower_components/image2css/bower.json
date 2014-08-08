@@ -1,0 +1,32 @@
+{
+  "name": "image2css",
+  "main": "image2css.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/felquis/image2css",
+  "authors": [
+    "Felquis Gimenes <frgformenton@gmail.com>"
+  ],
+  "description": "Convert any image to CSS using box-shadow",
+  "keywords": [
+    "css",
+    "image",
+    "canvas",
+    "box-shadow",
+    "convert",
+    "transform"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "Gruntfile.js",
+    ".grunt/",
+    "*.html",
+    "*.css",
+    "README.md",
+    "package.json"
+  ]
+}
