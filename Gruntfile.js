@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         run: true,
       }
     },
-  },
+  }
 
   grunt.initConfig(taskConfigs);
 
