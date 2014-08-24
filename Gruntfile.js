@@ -30,11 +30,29 @@ module.exports = function(grunt) {
     },
   }
 
+  taskConfigs.jshint = {
+    options: {
+      curly: true,
+      eqeqeq: true,
+      eqnull: true,
+      browser: true,
+      globals: {
+
+      },
+    },
+    js: ['lib/image2css.js'],
+    gruntfile: {
+      src: ['Gruntfile.js']
+    }
+  }
+
   grunt.initConfig(taskConfigs);
 
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-mocha');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   grunt.registerTask('deploy', ['mocha:image2css', 'gh-pages']);
+  grunt.registerTask('test', ['jshint', 'mocha:image2css']);
 
 };
