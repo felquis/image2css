@@ -19,7 +19,7 @@ module.exports = function(grunt) {
             'css/**',
             'scripts/**',
             'lib/**']
-  }
+  };
 
   taskConfigs.mocha = {
     image2css: {
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         run: true,
       }
     },
-  }
+  };
 
   taskConfigs.jshint = {
     options: {
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
     gruntfile: {
       src: ['Gruntfile.js']
     }
-  }
+  };
 
   grunt.initConfig(taskConfigs);
 

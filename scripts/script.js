@@ -33,7 +33,7 @@ function handleFileSelect(evt) {
     });
   };
 
-  for (var i = 0, file; file = files[i]; i += 1) {
+  for (var i = 0, file; (file = files[i]) && !!files[i]; i += 1) {
 
     // Only process image files.
     if (!file.type.match('image.*')) {
