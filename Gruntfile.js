@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 
       },
     },
-    js: ['lib/image2css.js'],
+    js: ['lib/image2css.js', 'scripts/script.js'],
     gruntfile: {
       src: ['Gruntfile.js']
     }
