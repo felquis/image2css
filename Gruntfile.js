@@ -52,7 +52,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha');
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
-  grunt.registerTask('deploy', ['mocha:image2css', 'gh-pages']);
+  grunt.registerTask('deploy', ['jshint', 'mocha:image2css', 'gh-pages']);
   grunt.registerTask('test', ['jshint', 'mocha:image2css']);
 
 };
