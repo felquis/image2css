@@ -5,7 +5,35 @@ function handleFileSelect(evt) {
 
   var files = evt.target.files || (evt.dataTransfer || {}).files;
 
-  for (var i = 0, file; file = files[i]; i++) {
+  var onReaderLoad = function (file) {
+
+    var span = document.createElement('span');
+    span.classList.add('item');
+
+    spanText = ['Original Image ', image2css.bytesToSize(file.total) ,': <br> ',
+                '<img class="thumb" src="', file.target.result,
+                '" title="', escape(file.total), '"/>'];
+
+    image2css({
+      images: [file.target.result]
+    }, function (images) {
+      images.forEach(function (image) {
+        var i = document.createElement('i');
+
+        i.style.boxShadow = image.boxshadow;
+
+        spanText.push('box-shadow version:', image.size, ' <br>');
+        span.innerHTML = spanText.join('');
+        span.appendChild(i);
+
+        document.querySelector('.output').value = image.boxshadow;
+        document.querySelector('.result').innerHTML = '';
+        document.querySelector('.result').insertBefore(span, null);
+      });
+    });
+  };
+
+  for (var i = 0, file; (file = files[i]) && !!files[i]; i += 1) {
 
     // Only process image files.
     if (!file.type.match('image.*')) {
@@ -16,35 +44,7 @@ function handleFileSelect(evt) {
 
     reader.readAsDataURL(file);
 
-    reader.onload = (function(theFile) {
-      return function(e) {
-
-        var span = document.createElement('span');
-        span.classList.add('item');
-
-        spanText = ['Original Image ', image2css.bytesToSize(theFile.size) ,' bytes: <br> ',
-                          '<img class="thumb" src="', e.target.result,
-                          '" title="', escape(theFile.name), '"/>'];
-
-        image2css({
-          images: [e.target.result]
-        }, function (images) {
-          images.forEach(function (image) {
-            var i = document.createElement('i');
-
-            i.style.boxShadow = image.boxshadow;
-
-            spanText.push('box-shadow version:', image.size, ' <br>');
-            span.innerHTML = spanText.join('');
-            span.appendChild(i);
-
-            document.querySelector('.output').value = image.boxshadow;
-            document.querySelector('.result').innerHTML = '';
-            document.querySelector('.result').insertBefore(span, null);
-          })
-        })
-      };
-    })(file);
+    reader.onload = onReaderLoad;
   }
 }
 
