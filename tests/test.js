@@ -54,22 +54,22 @@ describe('image2css', function () {
     expect(images[0].size).to.be.equal('41.1 KB')
   })
 
-  describe('#RGBToHex', function () {
+  describe('#rgbtohex', function () {
 
-    it('Expect image2css.RGBToHex to be a function', function(){
-      expect(image2css.RGBToHex).to.be.a('function')
+    it('Expect image2css.rgbtohex to be a function', function(){
+      expect(image2css.rgbtohex).to.be.a('function')
     })
 
     it('Expect that return strings', function () {
-      expect(image2css.RGBToHex(0, 0, 0)).to.be.a('string');
+      expect(image2css.rgbtohex(0, 0, 0)).to.be.a('string');
     })
 
     it('Expect that return #000000 from rgb 0, 0, 0', function () {
-      expect(image2css.RGBToHex(0, 0, 0)).to.be.equal('#000000');
+      expect(image2css.rgbtohex(0, 0, 0)).to.be.equal('#000000');
     })
 
     it('Expect that return #91000f from rgb 145, 0, 15', function () {
-      expect(image2css.RGBToHex(145, 0, 15)).to.be.equal('#91000f');
+      expect(image2css.rgbtohex(145, 0, 15)).to.be.equal('#91000f');
     })
   })
 
