@@ -18,12 +18,22 @@ function handleFileSelect(evt) {
       images: [file.target.result]
     }, function (images) {
       images.forEach(function (image) {
-        var i = document.createElement('i');
 
-        i.style.boxShadow = image.boxshadow;
+        var i = document.createElement('i');
+        var elementShadow = document.createElement('i');
+
+        i.classList.add('element-shadow-wraper');
+        elementShadow.classList.add('element-shadow');
+
+        i.style.width = image.width + 'px';
+        i.style.height = image.height + 'px';
+
+        elementShadow.style.boxShadow = image.boxshadow;
 
         spanText.push('box-shadow version:', image.size, ' <br>');
         span.innerHTML = spanText.join('');
+
+        i.appendChild(elementShadow);
         span.appendChild(i);
 
         document.querySelector('.output').value = image.boxshadow;
