@@ -55,9 +55,16 @@ body, html {
   flex: 1;
 }
 
-i {
+.element-shadow-wraper {
   display: inline-block;
+  position: relative;
+}
+
+.element-shadow {
   height: 1em;
   width: 1em;
   font-size: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
