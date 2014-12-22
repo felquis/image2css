@@ -1,71 +1,75 @@
-function handleFileSelect(evt) {
+(function (image2css) {
+  'use strict';
 
-  evt.stopPropagation();
-  evt.preventDefault();
+  function handleFileSelect(evt) {
 
-  var files = evt.target.files || (evt.dataTransfer || {}).files;
+    evt.stopPropagation();
+    evt.preventDefault();
 
-  var onReaderLoad = function (file) {
+    var files = evt.target.files || (evt.dataTransfer || {}).files;
 
-    var span = document.createElement('span');
-    span.classList.add('item');
+    var onReaderLoad = function (file) {
 
-    spanText = ['Original Image ', image2css.bytesToSize(file.total) ,': <br> ',
-                '<img class="thumb" src="', file.target.result,
-                '" title="', escape(file.total), '"/>'];
+      var span = document.createElement('span');
+      span.classList.add('item');
 
-    image2css({
-      images: [file.target.result]
-    }, function (images) {
-      images.forEach(function (image) {
+      var spanText = ['Original Image ', image2css.bytesToSize(file.total) ,': <br> ',
+                  '<img class="thumb" src="', file.target.result,
+                  '" title="', escape(file.total), '"/>'];
 
-        var i = document.createElement('i');
-        var elementShadow = document.createElement('i');
+      image2css({
+        images: [file.target.result]
+      }, function (images) {
+        images.forEach(function (image) {
 
-        i.classList.add('element-shadow-wraper');
-        elementShadow.classList.add('element-shadow');
+          var i = document.createElement('i');
+          var elementShadow = document.createElement('i');
 
-        i.style.width = image.width + 'px';
-        i.style.height = image.height + 'px';
+          i.classList.add('element-shadow-wraper');
+          elementShadow.classList.add('element-shadow');
 
-        elementShadow.style.boxShadow = image.boxshadow;
+          i.style.width = image.width + 'px';
+          i.style.height = image.height + 'px';
 
-        spanText.push('box-shadow version:', image.size, ' <br>');
-        span.innerHTML = spanText.join('');
+          elementShadow.style.boxShadow = image.boxshadow;
 
-        i.appendChild(elementShadow);
-        span.appendChild(i);
+          spanText.push('box-shadow version:', image.size, ' <br>');
+          span.innerHTML = spanText.join('');
 
-        document.querySelector('.output').value = image.boxshadow;
-        document.querySelector('.result').innerHTML = '';
-        document.querySelector('.result').insertBefore(span, null);
+          i.appendChild(elementShadow);
+          span.appendChild(i);
+
+          document.querySelector('.output').value = image.boxshadow;
+          document.querySelector('.result').innerHTML = '';
+          document.querySelector('.result').insertBefore(span, null);
+        });
       });
-    });
-  };
+    };
 
-  for (var i = 0, file; (file = files[i]) && !!files[i]; i += 1) {
+    for (var i = 0, file; (file = files[i]) && !!files[i]; i += 1) {
 
-    // Only process image files.
-    if (!file.type.match('image.*')) {
-      continue;
+      // Only process image files.
+      if (!file.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      reader.readAsDataURL(file);
+
+      reader.onload = onReaderLoad;
     }
-
-    var reader = new FileReader();
-
-    reader.readAsDataURL(file);
-
-    reader.onload = onReaderLoad;
   }
-}
 
-function handleDragOver(evt) {
-  evt.stopPropagation();
-  evt.preventDefault();
-  evt.dataTransfer.dropEffect = 'copy';
-}
+  function handleDragOver(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    evt.dataTransfer.dropEffect = 'copy';
+  }
 
-document.getElementById('files').addEventListener('change', handleFileSelect, false);
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
-var dropZone = document.querySelector('.drop-zone');
-dropZone.addEventListener('dragover', handleDragOver, false);
-dropZone.addEventListener('drop', handleFileSelect, false);
+  var dropZone = document.querySelector('.drop-zone');
+  dropZone.addEventListener('dragover', handleDragOver, false);
+  dropZone.addEventListener('drop', handleFileSelect, false);
+}(image2css));
