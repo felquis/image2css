@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+  'use strict';
+
   // Project configuration.
   var taskConfigs = {};
 
@@ -32,15 +34,21 @@ module.exports = function(grunt) {
 
   taskConfigs.jshint = {
     options: {
-      curly: true,
-      eqeqeq: true,
-      eqnull: true,
-      browser: true,
-      globals: {
-
-      },
+      reporter: require('jshint-stylish')
     },
-    js: ['lib/image2css.js', 'scripts/script.js'],
+    browser: {
+      src: ['lib/*.js', 'scripts/*.js']
+    },
+    tests: {
+      options: {
+        globals: {
+          it: true,
+          describe: true,
+          before: true
+        }
+      },
+      src: ['tests/*.js']
+    },
     gruntfile: {
       src: ['Gruntfile.js']
     }
