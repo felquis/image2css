@@ -4,7 +4,7 @@
   "description": "Convert image to box-shadow",
   "main": "image2css.js",
   "scripts": {
-    "test": "grunt mocha",
+    "test": "grunt test",
     "postinstall": "bower install"
   },
   "repository": {
