@@ -1,9 +1,6 @@
 var expect = chai.expect;
 
 describe('image2css', function () {
-  it('Expect that exist a global variable', function(){
-    expect(image2css).to.exist();
-  });
 
   it('Expect image2css to be a function', function(){
     expect(image2css).to.be.a('function');
@@ -23,40 +20,34 @@ describe('image2css', function () {
     });
   });
 
-  it('Expect to be array', function () {
+  it('Expect result to be an array', function () {
     expect(images).to.be.an('array');
   });
 
-  it('Expect to be a object', function () {
+  it('Expect each array index to be an object', function () {
     images.forEach(function (image) {
       expect(image).to.be.an('object');
     });
   });
 
-  it('Expect to be a object', function () {
-    images.forEach(function (image) {
-      expect(image).to.be.an('object');
-    });
-  });
-
-  it('Expect to be a number', function () {
+  it('Expect bytes property to be a number', function () {
     expect(images[0].bytes).to.be.a('number');
   });
 
-  it('Expect to be string', function () {
+  it('Expect these properties to be strings', function () {
     expect(images[0].index).to.be.a('string');
     expect(images[0].size).to.be.a('string');
     expect(images[0].filename).to.be.a('string');
     expect(images[0].boxshadow).to.be.a('string');
   });
 
-  it('Expect to be KBs', function () {
+  it('Expect size to be equal 41.1KB', function () {
     expect(images[0].size).to.be.equal('41.1 KB');
   });
 
   describe('#rgbtohex', function () {
 
-    it('Expect image2css.rgbtohex to be a function', function(){
+    it('Expect it to be a function', function(){
       expect(image2css.rgbtohex).to.be.a('function');
     });
 
@@ -74,7 +65,7 @@ describe('image2css', function () {
   });
 
   describe('#bytesToSize', function () {
-    it('Expect image2css.bytesToSize to be a function', function(){
+    it('Expect it to be a function', function(){
       expect(image2css.bytesToSize).to.be.a('function');
     });
 
@@ -109,15 +100,15 @@ describe('image2css', function () {
   });
 
   describe('#lengthInUtf8Bytes', function () {
-    it('Expect image2css.lengthInUtf8Bytes to be a function', function(){
+    it('Expect it to be a function', function(){
       expect(image2css.lengthInUtf8Bytes).to.be.a('function');
     });
 
-    it('Expect return number', function () {
+    it('Expect to return a number', function () {
       expect(image2css.lengthInUtf8Bytes('some string')).to.be.a('number');
     });
 
-    it('Expect return 11', function () {
+    it('Expect to return 11', function () {
       expect(image2css.lengthInUtf8Bytes('some string')).to.be.deep.equal(11);
     });
   });
